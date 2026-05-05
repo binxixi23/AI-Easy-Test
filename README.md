@@ -1,3 +1,6 @@
+## 📊 System Visualization
+![AI Easy Test Diagram](diagram.png)
+
 # AI Easy Test: Autonomous Robotic Phlebotomy System
 
 **AI Easy Test** is an AI-powered medical robot designed to automate the blood testing process, ensuring precision, safety, and speed.
@@ -13,6 +16,9 @@
 - **Languages:** Python, C++ (Arduino)
 - **AI/CV:** OpenCV, TensorFlow Lite
 - **Hardware:** Raspberry Pi 5 (Main Brain), Arduino Mega (Motor Control), NIR Camera.
+
+## 💻 Terminal Output Demo
+![Terminal Output](terminal.png)
 
 ## ⚙️ Installation
 1. Clone the repo:
