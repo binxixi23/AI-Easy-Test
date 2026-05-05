@@ -1,0 +1,5 @@
+opencv-python
+numpy
+pyserial
+flask  # Để làm dashboard điều khiển qua Wi-Fi
+tensorflow-cpu
