@@ -1,28 +1,33 @@
-import cv2
-from src.vision import VesselDetector
-from src.robot_ctrl import ArmController
+import tkinter as tk
+from src.gui import RobotDashboard
+import time
 
-class AIEasyTest:
-    def __init__(self):
-        print("System: AI Easy Test Initializing...")
-        self.vision = VesselDetector()
-        self.arm = ArmController()
-        self.is_connected = True
+def run_simulation(gui):
+    # Bước 1: Khởi động
+    gui.update_status("Đang khởi động hệ thống...", 10)
+    time.sleep(1.5)
 
-    def run_cycle(self):
-        # 1. Tìm tĩnh mạch
-        target = self.vision.get_vein_coordinates()
-        
-        if target:
-            # 2. Cố định và lấy máu
-            self.arm.secure_hand()
-            self.arm.move_to(target)
-            self.arm.draw_blood()
-            
-            # 3. Xét nghiệm nhanh & Hậu cần
-            self.arm.apply_bandaid()
-            print("Process Complete. Data uploaded to Cloud.")
+    # Bước 2: Tìm mạch máu
+    gui.update_status("Đang quét tĩnh mạch bằng Laser NIR...", 30)
+    time.sleep(2)
+
+    # Bước 3: Lấy máu
+    gui.update_status("Đang thực hiện lấy máu tự động...", 60)
+    time.sleep(2)
+
+    # Bước 4: Xét nghiệm & dán băng
+    gui.update_status("Đang sát trùng và dán băng cá nhân...", 85)
+    time.sleep(1.5)
+
+    # Bước 5: Hoàn tất
+    gui.update_status("Quy trình hoàn tất! Bạn có thể rút tay.", 100)
+    gui.show_result("Glucose: 5.4 mmol/L - Bình thường")
 
 if __name__ == "__main__":
-    robot = AIEasyTest()
-    robot.run_cycle()
+    root = tk.Tk()
+    app = RobotDashboard(root)
+    
+    # Chạy mô phỏng sau khi cửa sổ hiện lên 1 giây
+    root.after(1000, lambda: run_simulation(app))
+    
+    root.mainloop()
